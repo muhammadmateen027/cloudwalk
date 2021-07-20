@@ -8,8 +8,6 @@ class NetworkException implements Exception {
 
   String getDetail() {
     var detail = defaultErrorDetail;
-
-
     return detail;
   }
 
