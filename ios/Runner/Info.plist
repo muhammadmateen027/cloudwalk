@@ -48,5 +48,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+            <string>To help us ensure your safety and wellbeing, while also providing live tracking info for shippers and consignees</string>
+        <key>NSLocationAlwaysUsageDescription</key>
+            <string>To help us ensure your safety and wellbeing, while also providing live tracking info for shippers and consignees</string>
+        <key>NSLocationWhenInUseUsageDescription</key>
+            <string>To help us ensure your safety and wellbeing, while also providing live tracking info for shippers and consignees</string>
+    <key>com.apple.developer.networking.wifi-info</key>
+    <true/>
+    <key>CNCopyCurrentNetworkInfo</key><true/>
 </dict>
 </plist>
