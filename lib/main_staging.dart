@@ -8,20 +8,17 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:cloudwalk/app/app.dart';
-import 'package:cloudwalk/app/app_bloc_observer.dart';
 
-void main() {
-  Bloc.observer = AppBlocObserver();
-  FlutterError.onError = (details) {
-    log(details.exceptionAsString(), stackTrace: details.stack);
-  };
+import 'config/config.dart';
+
+void main() async{
+  await Initialization.init();
 
   runZonedGuarded(
-    () => runApp(const App()),
-    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+        () => runApp(const App()),
+        (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
