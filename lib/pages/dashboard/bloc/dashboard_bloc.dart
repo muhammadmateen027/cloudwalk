@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:cloudwalk/repository/repository.dart';
@@ -23,19 +25,15 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   void _loadCurrentLocation(LoadCurrentLocation event,
       Emit<DashboardState> emit) async {
-    var isInternetAvailable = await _internetAvailable();
-    var locationAvailable = await locationService.locationStatus();
 
-    if (locationAvailable && !isInternetAvailable) {
-      var position = await locationService.getCurrentPosition();
+    var position = await locationService.getCurrentPosition();
 
-      if(position != null) {
-        var latLong = LatLng(position.latitude, position.longitude);
-        var marker = locationService.getMarker(latLong);
+    if(position != null) {
+      var latLong = LatLng(position.latitude, position.longitude);
+      var marker = locationService.getMarker(latLong);
 
-        emit(CoordinatesLoaded(latLng: latLong, marker: marker));
-        return;
-      }
+      emit(CoordinatesLoaded(latLng: latLong, marker: marker));
+      return;
     }
 
     try {
@@ -61,17 +59,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       return;
     }
   }
-}
-
-
-Future<bool> _internetAvailable() async {
-  var connectivityResult = await Connectivity().checkConnectivity();
-
-  if (connectivityResult == ConnectivityResult.none) {
-    return false;
-  }
-
-  return true;
 }
 
 

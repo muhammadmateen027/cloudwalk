@@ -30,19 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
     return Material(
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Dashboard'),
-            actions: [
-              IconButton(
-                onPressed: () =>
-                    context.read<DashboardBloc>().add(LoadCurrentLocation()),
-                icon: Icon(Icons.refresh),
-              )
-            ],
-          ),
-          body: Container(
-            child: MapView(),
-          ),
+          body: MapView(),
         ),
       ),
     );
